@@ -1,7 +1,7 @@
 using System;
-using UnityEngine;
+using System.Collections.Generic;
 
-public interface IModel : IDisposable
+public interface IModel : IInitiable, IDisposable
 {
-    void Init(ScriptableObject modelData);
+    List<object> Methods { get; }
 }

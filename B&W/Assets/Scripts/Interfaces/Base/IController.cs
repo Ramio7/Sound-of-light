@@ -1,6 +1,5 @@
 using System;
 
-public interface IController: IDisposable
+public interface IController: IInitiable, IDisposable
 {
-    void Init(IView view, IModel model);
 }
