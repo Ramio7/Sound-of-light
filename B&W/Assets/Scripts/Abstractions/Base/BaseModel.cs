@@ -3,23 +3,31 @@ using UnityEngine;
 
 public class BaseModel : IModel
 {
-    private ScriptableObject _modelData;
-    private List<int> _values = new();
+    private IScriptableObject _modelData;
 
-    public List<object> Methods { get; private set; }
+    private Dictionary<string, bool> _boolValues = new();
+    private Dictionary<string, int> _intValues = new();
+    private Dictionary<string, float> _floatValues = new();
+    private Dictionary<string, string> _stringValues = new();
+    private Dictionary<string, GameObject> _prefabs = new();
 
-    public BaseModel(ScriptableObject modelData)
+    public BaseModel(IScriptableObject modelData)
     {
         _modelData = modelData;
     }
 
     public virtual void Init() 
     {
-        var _properties = _modelData.GetType().GetProperties();
+        var fields = _modelData.Fields;
         
-        for (int i = 0; i < _properties.Length; i++)
+        for (int i = 0; i < fields.Count; i++)
         {
-            ;
+            var fieldType = fields[i].FieldType;
+            if (fieldType == typeof(bool)) _boolValues.Add(fields[i].Name, (bool)fields[i].GetValue(fields[i]));
+            if (fieldType == typeof(int)) _intValues.Add(fields[i].Name, (int)fields[i].GetValue(fields[i]));
+            if (fieldType == typeof(float)) _floatValues.Add(fields[i].Name, (float)fields[i].GetValue(fields[i]));
+            if (fieldType == typeof(string)) _stringValues.Add(fields[i].Name, (string)fields[i].GetValue(fields[i]));
+            if (fieldType == typeof(GameObject)) _prefabs.Add(fields[i].Name, (GameObject)fields[i].GetValue(fields[i]));
         }
     }
 
