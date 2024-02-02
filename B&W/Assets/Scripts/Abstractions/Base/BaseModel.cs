@@ -3,13 +3,13 @@ using UnityEngine;
 
 public class BaseModel : IModel
 {
-    private IScriptableObject _modelData;
+    protected IScriptableObject _modelData;
 
-    private Dictionary<string, bool> _boolValues = new();
-    private Dictionary<string, int> _intValues = new();
-    private Dictionary<string, float> _floatValues = new();
-    private Dictionary<string, string> _stringValues = new();
-    private Dictionary<string, GameObject> _prefabs = new();
+    protected Dictionary<string, bool> _boolValues = new();
+    protected Dictionary<string, int> _intValues = new();
+    protected Dictionary<string, float> _floatValues = new();
+    protected Dictionary<string, string> _stringValues = new();
+    protected Dictionary<string, GameObject> _prefabs = new();
 
     public BaseModel(IScriptableObject modelData)
     {
