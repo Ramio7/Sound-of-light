@@ -3,22 +3,19 @@ using UnityEngine;
 
 public class BaseModel : IModel
 {
-    protected IScriptableObject _modelData;
-
     protected Dictionary<string, bool> _boolValues = new();
     protected Dictionary<string, int> _intValues = new();
     protected Dictionary<string, float> _floatValues = new();
     protected Dictionary<string, string> _stringValues = new();
     protected Dictionary<string, GameObject> _prefabs = new();
 
-    public BaseModel(IScriptableObject modelData)
+    public BaseModel()
     {
-        _modelData = modelData;
     }
 
-    public virtual void Init() 
+    protected virtual void Init(IScriptableObject modelData) 
     {
-        var fields = _modelData.Fields;
+        var fields = modelData.Fields;
         
         for (int i = 0; i < fields.Count; i++)
         {
@@ -31,8 +28,27 @@ public class BaseModel : IModel
         }
     }
 
-    public void Dispose()
+    public virtual void Dispose()
     {
-        _modelData = null;
+        ClearDictionaries();
+        ClearMemory();
+    }
+
+    private void ClearDictionaries()
+    {
+        _boolValues.Clear();
+        _intValues.Clear();
+        _floatValues.Clear();
+        _prefabs.Clear();
+        _stringValues.Clear();
+    }
+
+    private void ClearMemory()
+    {
+        _boolValues = null;
+        _prefabs = null;
+        _intValues = null;
+        _floatValues = null;
+        _stringValues = null;
     }
 }

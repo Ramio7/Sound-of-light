@@ -1,17 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class MainMenuModel : MonoBehaviour
+public class MainMenuModel : BaseModel
 {
-    // Start is called before the first frame update
-    void Start()
+    public MainMenuModel(MainMenuScriptableObject data) : base()
     {
-        
+
     }
 
-    // Update is called once per frame
-    void Update()
+    public override void Dispose()
     {
         
     }

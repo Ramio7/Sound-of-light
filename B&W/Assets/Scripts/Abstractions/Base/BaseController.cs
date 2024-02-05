@@ -1,11 +1,11 @@
 public class BaseController : IController
 {
-    private IView _view;
-    private IModel _model;
+    protected IView _view;
+    protected IModel _model;
 
-    public BaseController(IView view, IScriptableObject modelData)
+    public BaseController(IView view)
     {
-        _model = new BaseModel(modelData);
+        _model = new BaseModel();
         _view = view;
     }
 

@@ -1,4 +1,4 @@
 public interface IInitiable
 {
-    void Init();
+    virtual void Init() { }
 }

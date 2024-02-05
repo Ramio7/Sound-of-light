@@ -23,7 +23,6 @@ public class EntryPointView : MonoBehaviour, IView
     {
         DontDestroyOnLoad(this);
         _controller = new(this, _entryPointData);
-        Instantiate(_entryPointData._mainMenuPrefab);
     }
 
     private void Update()
@@ -45,10 +44,10 @@ public class EntryPointView : MonoBehaviour, IView
 
     private void OnDestroy()
     {
-        DisposeControllers();
+        DisposeController();
     }
 
-    private void DisposeControllers()
+    private void DisposeController()
     {
         _controller.Dispose();
         _controller = null;
