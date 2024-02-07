@@ -1,3 +1,5 @@
+using UnityEngine;
+
 public class BaseController : IController
 {
     protected IView _view;
@@ -13,6 +15,8 @@ public class BaseController : IController
     {
         _model.Init();
     }
+
+    protected void InstantiateChildObject(GameObject childObject) => Object.Instantiate(childObject);
 
     public void Dispose()
     {

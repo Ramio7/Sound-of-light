@@ -1,5 +1,7 @@
 public class MainMenuModel : BaseModel
 {
+    
+
     public MainMenuModel(MainMenuScriptableObject data) : base()
     {
 

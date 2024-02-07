@@ -5,10 +5,8 @@ public class EntryPointController : BaseController
     public EntryPointController(EntryPointView view, EntryPointScriptableObject modelData) : base(view)
     {
         var tempModel = new EntryPointModel(modelData);
-        InstantiateMainMenu(tempModel.MainMenuPrefab);
+        InstantiateMainMenu(tempModel.MainMenuView);
     }
 
-    private void InstantiateGameService(GameObject serviceObjectPrefab) => Object.Instantiate(serviceObjectPrefab);
-
-    private void InstantiateMainMenu(GameObject mainMenuPrefab) => InstantiateGameService(mainMenuPrefab);
+    private void InstantiateMainMenu(GameObject mainMenuPrefab) => InstantiateChildObject(mainMenuPrefab);
 }

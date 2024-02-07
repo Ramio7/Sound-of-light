@@ -27,6 +27,8 @@ public class EntryPointView : MonoBehaviour, IView
 
     private void Update()
     {
+        OnUpdate.Invoke();
+
         if (Input.GetKeyUp(KeyCode.Escape))
         {
 #if UNITY_EDITOR
@@ -37,9 +39,9 @@ public class EntryPointView : MonoBehaviour, IView
         }
     }
 
-    private void FixedUpdate()
+    private void FixedUpdate() 
     {
-        
+        OnFixedUpdate.Invoke();
     }
 
     private void OnDestroy()
