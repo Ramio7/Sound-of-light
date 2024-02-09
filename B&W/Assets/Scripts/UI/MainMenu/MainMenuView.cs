@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MainMenuView : MonoBehaviour, IView
 {
-    [SerializeField] MainMenuScriptableObject _mainMenuData;
+    public MainMenuScriptableObject MainMenuData {  get; private set; }
 
     private MainMenuController _controller;
 
@@ -12,6 +12,6 @@ public class MainMenuView : MonoBehaviour, IView
 
     private void OnEnable()
     {
-        _controller = new(this, _mainMenuData);
+        _controller = new(this, MainMenuData);
     }
 }

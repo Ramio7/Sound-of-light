@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class EntryPointView : MonoBehaviour, IView
 {
-    [SerializeField] private EntryPointScriptableObject _entryPointData;
+    public EntryPointScriptableObject EntryPointData { get; private set; }
 
-    EntryPointController _controller;
+    private EntryPointController _controller;
 
     public List<Action> Actions => throw new NotImplementedException();
 
@@ -22,7 +22,7 @@ public class EntryPointView : MonoBehaviour, IView
     private void OnEnable()
     {
         DontDestroyOnLoad(this);
-        _controller = new(this, _entryPointData);
+        _controller = new(this, EntryPointData);
     }
 
     private void Update()

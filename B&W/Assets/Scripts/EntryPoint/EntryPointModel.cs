@@ -12,7 +12,7 @@ public class EntryPointModel : BaseModel
     protected override void Init(IScriptableObject modelData)
     {
         var tempData = modelData as EntryPointScriptableObject;
-        MainMenuView = tempData._mainMenuObject;
+        MainMenuView = tempData.MainMenuObject;
     }
 
     public override void Dispose()

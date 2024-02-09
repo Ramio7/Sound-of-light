@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "ScriptableObjects/" + nameof(EntryPointScriptableObject), fileName = nameof(EntryPointScriptableObject))]
-public class EntryPointScriptableObject : BaseScriptableObject, IScriptableObject
+public class EntryPointScriptableObject : BaseScriptableObject
 {
-    public GameObject _mainMenuObject;
+    public GameObject MainMenuObject { get; private set; }
 }
