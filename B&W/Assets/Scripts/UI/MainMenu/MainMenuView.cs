@@ -14,4 +14,11 @@ public class MainMenuView : MonoBehaviour, IView
     {
         _controller = new(this, MainMenuData);
     }
+
+    private void OnDestroy()
+    {
+        _controller.Dispose();
+
+        _controller = null;
+    }
 }

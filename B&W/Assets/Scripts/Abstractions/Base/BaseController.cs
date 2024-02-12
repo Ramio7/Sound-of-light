@@ -18,7 +18,7 @@ public class BaseController : IController
 
     protected void InstantiateChildObject(GameObject childObject) => Object.Instantiate(childObject);
 
-    public void Dispose()
+    public virtual void Dispose()
     {
         _model.Dispose();
 
