@@ -1,3 +1,5 @@
+using UnityEngine;
+
 public class MainMenuController : BaseController
 {
     private new MainMenuModel _model;
@@ -11,7 +13,7 @@ public class MainMenuController : BaseController
 
     public override void Init()
     {
-        
+        SubscribeButtons();
     }
 
     public override void Dispose()
@@ -21,4 +23,18 @@ public class MainMenuController : BaseController
         _model = null;
         _view = null;
     }
+
+    private void SubscribeButtons()
+    {
+        _view.SettingsButton.onClick.AddListener(ActivateSettingsMenu);
+#if UNITY_EDITOR
+        _view.ExitGameButton.onClick.AddListener(Debug.Break);
+#else
+        _view.ExitGameButton.onClick.AddListener(Application.Quit);
+#endif
+        _view.ContinueGameButton.onClick.AddListener(GameController.Instance.StartGame);
+        _view.StartGameButton.onClick.AddListener(GameController.Instance.StartGame);
+    }
+
+    private void ActivateSettingsMenu() => _model.ChangeCanvas(_view.SettingsCanvas);
 }
