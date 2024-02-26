@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EntryPointView : MonoBehaviour, IView
 {
-    public EntryPointScriptableObject EntryPointData { get; private set; }
+    [SerializeField] private EntryPointScriptableObject _entryPointData;
 
     private EntryPointController _controller;
 
@@ -13,21 +13,15 @@ public class EntryPointView : MonoBehaviour, IView
     public static event Action OnUpdate;
     public static event Action OnFixedUpdate;
 
-    private void Awake()
-    {
-        OnUpdate = Update;
-        OnFixedUpdate = FixedUpdate;
-    }
-
     private void OnEnable()
     {
         DontDestroyOnLoad(this);
-        _controller = new(this, EntryPointData);
+        _controller = new(this, _entryPointData);
     }
 
     private void Update()
     {
-        OnUpdate.Invoke();
+        OnUpdate?.Invoke();
 
         if (Input.GetKeyUp(KeyCode.Escape))
         {
@@ -41,7 +35,7 @@ public class EntryPointView : MonoBehaviour, IView
 
     private void FixedUpdate() 
     {
-        OnFixedUpdate.Invoke();
+        OnFixedUpdate?.Invoke();
     }
 
     private void OnDestroy()

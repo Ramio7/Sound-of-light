@@ -3,6 +3,7 @@ using UnityEngine;
 public class EntryPointModel : BaseModel
 {
     public GameObject MainMenuView { get; private set; }
+    public GameObject GameView { get; private set; }
 
     public EntryPointModel(EntryPointScriptableObject modelData) : base()
     {
@@ -12,11 +13,13 @@ public class EntryPointModel : BaseModel
     protected override void Init(IScriptableObject modelData)
     {
         var tempData = modelData as EntryPointScriptableObject;
-        MainMenuView = tempData.MainMenuObject;
+        MainMenuView = tempData.MainMenuPrefab;
+        GameView = tempData.GamePrefab;
     }
 
     public override void Dispose()
     {
         MainMenuView = null;
+        GameView = null;
     }
 }

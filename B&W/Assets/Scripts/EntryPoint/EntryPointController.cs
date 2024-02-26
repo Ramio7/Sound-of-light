@@ -6,14 +6,16 @@ public class EntryPointController : BaseController
 
     public EntryPointController(EntryPointView view, EntryPointScriptableObject modelData) : base(view)
     {
-        var tempModel = new EntryPointModel(modelData);
+        _model = new EntryPointModel(modelData);
         Init();
     }
 
     public override void Init()
     {
         InstantiateMainMenu(_model.MainMenuView);
+        InstantiateGame(_model.GameView);
     }
 
     private void InstantiateMainMenu(GameObject mainMenuPrefab) => InstantiateChildObject(mainMenuPrefab);
+    private void InstantiateGame(GameObject gamePrefab) => InstantiateChildObject(gamePrefab);
 }
