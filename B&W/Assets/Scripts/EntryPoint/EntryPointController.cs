@@ -12,8 +12,10 @@ public class EntryPointController : BaseController
 
     public override void Init()
     {
-        InstantiateMainMenu(_model.MainMenuView);
+        base.Init();
+
         InstantiateGame(_model.GameView);
+        InstantiateMainMenu(_model.MainMenuView);
     }
 
     private void InstantiateMainMenu(GameObject mainMenuPrefab) => InstantiateChildObject(mainMenuPrefab);

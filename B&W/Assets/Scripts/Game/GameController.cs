@@ -7,17 +7,21 @@ public class GameController : BaseController
 
     public GameController(IView view, GameScriptableObject modelData) : base(view)
     {
+        Init();
     }
 
     public override void Init()
     {
         base.Init();
+
+        Instance = this;
     }
+
     public override void Dispose()
     {
         base.Dispose();
 
-        _model.Dispose();
+        _model?.Dispose();
         _model = null;
         _view = null;
     }
