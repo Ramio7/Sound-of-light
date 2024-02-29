@@ -1,18 +1,27 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class SettingsMenuController : MonoBehaviour
+public class SettingsMenuController : BaseController
 {
-    // Start is called before the first frame update
-    void Start()
+    private new SettingsMenuView _view;
+    private new SettingsMenuModel _model;
+
+    public SettingsMenuController(SettingsMenuView view, SettingsMenuScriptableObject settingsDefaults) : base(view)
     {
-        
+        _view = view;
+        _model = new(settingsDefaults);
+        Init();
     }
 
-    // Update is called once per frame
-    void Update()
+    public override void Init()
     {
-        
+        base.Init();
+    }
+
+    public override void Dispose()
+    {
+        base.Dispose();
+
+        _model.Dispose();
+
+        _view = null;
+        _model = null;
     }
 }

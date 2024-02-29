@@ -1,18 +1,29 @@
-using System.Collections;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class SettingsMenuView : MonoBehaviour
+public class SettingsMenuView : MonoBehaviour, IView
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private SettingsMenuScriptableObject _settingsDefaults;
+
+    [SerializeField] private Slider _soundVolumeSlider;
+    [SerializeField] private Slider _musicVolumeSlider;
+    [SerializeField] private Slider _brightnessVolumeSlider;
+
+    private SettingsMenuController _controller;
+
+    public List<Action> Actions => throw new NotImplementedException();
+
+    private void OnEnable()
     {
-        
+        _controller = new(this, _settingsDefaults);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnDestroy()
     {
-        
+        _controller.Dispose();
+
+        _controller = null;
     }
 }
