@@ -7,9 +7,14 @@ public class SettingsMenuView : MonoBehaviour, IView
 {
     [SerializeField] private SettingsMenuScriptableObject _settingsDefaults;
 
+    [SerializeField] private Slider _masterSoundVolumeSlider;
     [SerializeField] private Slider _soundVolumeSlider;
     [SerializeField] private Slider _musicVolumeSlider;
+    [SerializeField] private Slider _effectVolumeSlider;
+    [SerializeField] private Slider _voiceVolumeSlider;
     [SerializeField] private Slider _brightnessVolumeSlider;
+    [SerializeField] private Slider _contrastRatioSlider;
+    [SerializeField] private Toggle _subtitlesSlider;
 
     private SettingsMenuController _controller;
 
