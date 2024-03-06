@@ -14,7 +14,7 @@ public class SettingsMenuView : MonoBehaviour, IView
     [SerializeField] private Slider _voiceVolumeSlider;
     [SerializeField] private Slider _brightnessVolumeSlider;
     [SerializeField] private Slider _contrastRatioSlider;
-    [SerializeField] private Toggle _subtitlesSlider;
+    [SerializeField] private Toggle _subtitlesToogle;
 
     private SettingsMenuController _controller;
 
